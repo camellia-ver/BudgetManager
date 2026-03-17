@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BudgetManager.Models
+{
+    public enum TransactionType
+    {
+        Income,
+        Expense
+    }
+
+    internal class Transaction
+    {
+        public int Id { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public TransactionType Type { get; set; }
+        public string Category { get; set; } = string.Empty;
+    }
+}

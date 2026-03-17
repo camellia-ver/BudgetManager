@@ -3,7 +3,7 @@
 > C# WinForms로 개발한 개인 가계부 애플리케이션입니다.  
 > CRUD, 외부 API 연동, 파일 처리(CSV/Excel) 기능을 포함합니다.
 
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=dotnet)
+![.NET](https://img.shields.io/badge/.NET-10.0-512BD4?style=flat-square&logo=dotnet)
 ![C#](https://img.shields.io/badge/C%23-WinForms-239120?style=flat-square&logo=csharp)
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
@@ -47,7 +47,7 @@
 
 | 구분 | 기술 |
 |------|------|
-| **언어** | C# (.NET 8.0) |
+| **언어** | C# (.NET 10.0) |
 | **UI** | Windows Forms (WinForms) |
 | **DB** | SQLite (Microsoft.Data.Sqlite) |
 | **차트** | LiveCharts2 |
