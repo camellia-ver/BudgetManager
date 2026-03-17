@@ -1,8 +1,9 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using BudgetManager.Models;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using BudgetManager.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BudgetManager.Services
 {
@@ -59,11 +60,46 @@ namespace BudgetManager.Services
                 cmd.Parameters.AddWithValue("@Amount", transaction.Amount);
                 cmd.Parameters.AddWithValue("@Date", transaction.Date.ToString("yyyy-MM-dd"));
                 cmd.Parameters.AddWithValue("@Description", transaction.Description);
-                cmd.Parameters.AddWithValue("@Type", transaction.Type);
+                cmd.Parameters.AddWithValue("@Type", (int)transaction.Type);
                 cmd.Parameters.AddWithValue("@Category", transaction.Category);
 
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public List<Transaction> GetTransactions(DateTime startDate, DateTime endDate)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT * FROM Transactions WHERE Date >= @StartDate AND Date <= @EndDate;";
+
+            var transactions = new List<Transaction>();
+
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@StartDate", startDate);
+                cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //0: Id, 1: Amount, 2: Date, 3: Description, 4: Type, 5: Category
+                    var transaction = new Transaction
+                    {
+                        Id = reader.GetInt32(0),
+                        Amount = reader.GetInt32(1),
+                        Date = reader.GetDateTime(2),
+                        Description = reader.GetString(3),
+                        Type = (TransactionType)reader.GetInt32(4),
+                        Category = reader.GetString(5),
+                    };
+
+                    transactions.Add(transaction);
+                }
+            }
+
+            return transactions;
         }
     }
 }
