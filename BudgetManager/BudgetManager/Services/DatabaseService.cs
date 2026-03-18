@@ -88,8 +88,8 @@ namespace BudgetManager.Services
                     var transaction = new Transaction
                     {
                         Id = reader.GetInt32(0),
-                        Amount = reader.GetInt32(1),
-                        Date = reader.GetDateTime(2),
+                        Amount = (decimal)reader.GetDouble(1),
+                        Date = DateTime.Parse(reader.GetString(2)),
                         Description = reader.GetString(3),
                         Type = (TransactionType)reader.GetInt32(4),
                         Category = reader.GetString(5),
@@ -100,6 +100,26 @@ namespace BudgetManager.Services
             }
 
             return transactions;
+        }
+
+        public void UpdateTransaction(Transaction transaction)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "UPDATE Transactions SET Amount = @Amount, Date = @Date, Description = @Description, Type = @Type, Category = @Category WHERE Id = @Id;";
+
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@Id", transaction.Id);
+                cmd.Parameters.AddWithValue("@Amount", transaction.Amount);
+                cmd.Parameters.AddWithValue("@Date", transaction.Date.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@Description", transaction.Description);
+                cmd.Parameters.AddWithValue("@Type", (int)transaction.Type);
+                cmd.Parameters.AddWithValue("@Category", transaction.Category);
+
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
