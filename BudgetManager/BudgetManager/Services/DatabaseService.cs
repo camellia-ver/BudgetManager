@@ -3,6 +3,7 @@ using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Transactions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BudgetManager.Services
@@ -118,6 +119,20 @@ namespace BudgetManager.Services
                 cmd.Parameters.AddWithValue("@Type", (int)transaction.Type);
                 cmd.Parameters.AddWithValue("@Category", transaction.Category);
 
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteTransaction(int id)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "DELETE FROM Transactions WHERE Id = @Id";
+
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
             }
         }
