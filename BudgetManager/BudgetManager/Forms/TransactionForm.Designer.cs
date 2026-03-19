@@ -254,6 +254,7 @@
             rbExpense.TabStop = true;
             rbExpense.Text = "지출";
             rbExpense.UseVisualStyleBackColor = true;
+            rbExpense.CheckedChanged += rbExpense_CheckedChanged;
             // 
             // rbIncome
             // 
@@ -267,6 +268,7 @@
             rbIncome.TabStop = true;
             rbIncome.Text = "수입";
             rbIncome.UseVisualStyleBackColor = true;
+            rbIncome.CheckedChanged += rbIncome_CheckedChanged;
             // 
             // tableLayoutPanel5
             // 

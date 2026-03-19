@@ -23,7 +23,7 @@ namespace BudgetManager.Forms
         private void TransactionForm_Load(object sender, EventArgs e)
         {
             rbIncome.Checked = true;
-
+            LoadCategories();
         }
 
         private void LoadCategories()
@@ -36,12 +36,22 @@ namespace BudgetManager.Forms
 
             List<Category> categories = _databaseService.GetCategories(type);
 
-            foreach(Category category in categories)
+            foreach (Category category in categories)
             {
                 cmbCategory.Items.Add(category.Name);
             }
 
             cmbCategory.SelectedIndex = 0;
+        }
+
+        private void rbIncome_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadCategories();
+        }
+
+        private void rbExpense_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadCategories();
         }
     }
 }
