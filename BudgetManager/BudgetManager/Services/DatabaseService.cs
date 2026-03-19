@@ -44,6 +44,25 @@ namespace BudgetManager.Services
             {
                 cmd.ExecuteNonQuery();
             }
+
+            SeedDefaultCategories(connection);
+        }
+
+        private void SeedDefaultCategories(SqliteConnection connection)
+        {
+            var check = connection.CreateCommand();
+            check.CommandText = "SELECT COUNT(*) FROM Categories";
+            var count = (long)(check.ExecuteScalar() ?? 0);
+            if (count > 0) return;
+
+            var insert = connection.CreateCommand();
+            insert.CommandText = @"
+                INSERT INTO Categories (Name, Type) VALUES
+                ('월급', 0), ('용돈', 0), ('기타수입', 0),
+                ('식비', 1), ('교통비', 1), ('쇼핑', 1),
+                ('의료비', 1), ('문화', 1), ('기타지출', 1);
+            ";
+            insert.ExecuteNonQuery();
         }
 
         public void AddTransaction(Transaction transaction)
