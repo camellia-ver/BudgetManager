@@ -148,5 +148,29 @@ namespace BudgetManager.Services
                 return (decimal)(double)(result ?? 0.0);
             }
         }
+
+        public (decimal income, decimal expense) GetMonthlyTotal(DateTime date)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END), SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END) FROM Transactions\r\nWHERE strftime('%Y', Date) = @Year AND strftime('%m', Date) = @Month";
+
+            using(var cmd = new SqliteCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@Year", date.Year.ToString("D4"));
+                cmd.Parameters.AddWithValue("@Month", date.Month.ToString("D2"));
+
+                using var reader = cmd.ExecuteReader();
+                if(reader.Read())
+                {
+                    decimal income = (decimal)reader.GetDouble(0);
+                    decimal expense = (decimal)reader.GetDouble(1);
+                    return (income, expense);
+                }
+
+                return (0, 0);
+            }
+        }
     }
 }
