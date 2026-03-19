@@ -13,6 +13,7 @@ namespace BudgetManager.Services
         public DatabaseService(string dbPath = "budget.db")
         {
             _connectionString = $"Data Source={dbPath}";
+            InitializeDatabase();
         }
 
         private void InitializeDatabase()
@@ -159,12 +160,12 @@ namespace BudgetManager.Services
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
 
-            string sql = "SELECT SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END) - SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END) FROM Transactions";
-        
+            string sql = "SELECT COALESCE(SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END) - SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END), 0) FROM Transactions";
+
             using (var cmd = new SqliteCommand(sql, connection))
             {
                 var result = cmd.ExecuteScalar();
-                return (decimal)(double)(result ?? 0.0);
+                return Convert.ToDecimal(result);
             }
         }
 
@@ -173,9 +174,13 @@ namespace BudgetManager.Services
             using var connection = new SqliteConnection(_connectionString);
             connection.Open();
 
-            string sql = "SELECT SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END), SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END) FROM Transactions\r\nWHERE strftime('%Y', Date) = @Year AND strftime('%m', Date) = @Month";
-
-            using(var cmd = new SqliteCommand(sql, connection))
+            string sql = @"SELECT 
+                            COALESCE(SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END), 0),
+                            COALESCE(SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END), 0)
+                        FROM Transactions
+                        WHERE strftime('%Y', Date) = @Year AND strftime('%m', Date) = @Month";
+            
+            using (var cmd = new SqliteCommand(sql, connection))
             {
                 cmd.Parameters.AddWithValue("@Year", date.Year.ToString("D4"));
                 cmd.Parameters.AddWithValue("@Month", date.Month.ToString("D2"));

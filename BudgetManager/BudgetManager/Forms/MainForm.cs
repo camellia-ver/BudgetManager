@@ -10,6 +10,8 @@ namespace BudgetManager
 
         public MainForm()
         {
+            InitializeComponent();
+
             lvTransactions.Columns.Add("날짜", 100);
             lvTransactions.Columns.Add("구분", 60);
             lvTransactions.Columns.Add("금액", 100);
@@ -17,8 +19,6 @@ namespace BudgetManager
             lvTransactions.Columns.Add("설명", 200);
 
             lvTransactions.View = View.Details;
-
-            InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
