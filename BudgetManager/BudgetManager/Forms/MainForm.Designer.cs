@@ -174,6 +174,7 @@
             btnAddTransaction.TabIndex = 0;
             btnAddTransaction.Text = "+ 거래 추가";
             btnAddTransaction.UseVisualStyleBackColor = true;
+            btnAddTransaction.Click += btnAddTransaction_Click;
             // 
             // tableLayoutPanel5
             // 
@@ -208,6 +209,7 @@
             dtpMonth.Name = "dtpMonth";
             dtpMonth.Size = new Size(788, 27);
             dtpMonth.TabIndex = 1;
+            dtpMonth.ValueChanged += dtpMonth_ValueChanged;
             // 
             // MainForm
             // 
