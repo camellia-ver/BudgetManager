@@ -34,7 +34,14 @@ namespace BudgetManager.Forms
                 ? TransactionType.Income
                 : TransactionType.Expense;
 
-            //var categories = _databaseServic
+            List<Category> categories = _databaseService.GetCategories(type);
+
+            foreach(Category category in categories)
+            {
+                cmbCategory.Items.Add(category.Name);
+            }
+
+            cmbCategory.SelectedIndex = 0;
         }
     }
 }
