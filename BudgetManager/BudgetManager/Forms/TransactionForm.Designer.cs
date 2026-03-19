@@ -331,6 +331,7 @@
             btnCancel.TabIndex = 1;
             btnCancel.Text = "취소";
             btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
@@ -342,6 +343,7 @@
             btnSave.TabIndex = 0;
             btnSave.Text = "저장";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // TransactionForm
             // 
