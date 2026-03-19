@@ -4,11 +4,21 @@ namespace BudgetManager
 {
     public partial class MainForm : Form
     {
-        private readonly DatabaseService databaseService = new DatabaseService();
+        private readonly DatabaseService _databaseService = new DatabaseService();
 
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+
         }
     }
 }

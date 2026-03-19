@@ -134,5 +134,19 @@ namespace BudgetManager.Services
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public decimal GetBalance()
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT SUM(CASE WHEN Type = 0 THEN Amount ELSE 0 END) - SUM(CASE WHEN Type = 1 THEN Amount ELSE 0 END) FROM Transactions";
+        
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                var result = cmd.ExecuteScalar();
+                return (decimal)(double)(result ?? 0.0);
+            }
+        }
     }
 }

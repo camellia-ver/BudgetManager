@@ -30,14 +30,14 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
             label2 = new Label();
             lblBalance = new Label();
-            lblIncome = new Label();
+            tableLayoutPanel3 = new TableLayoutPanel();
             lblExpense = new Label();
-            btnAddTransaction = new Button();
+            lblIncome = new Label();
+            tableLayoutPanel4 = new TableLayoutPanel();
             btnStatistics = new Button();
+            btnAddTransaction = new Button();
             tableLayoutPanel5 = new TableLayoutPanel();
             lvTransactions = new ListView();
             dtpMonth = new DateTimePicker();
@@ -83,38 +83,6 @@
             tableLayoutPanel2.Size = new Size(794, 84);
             tableLayoutPanel2.TabIndex = 0;
             // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Controls.Add(lblExpense, 0, 1);
-            tableLayoutPanel3.Controls.Add(lblIncome, 0, 0);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 93);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(794, 84);
-            tableLayoutPanel3.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(btnStatistics, 1, 0);
-            tableLayoutPanel4.Controls.Add(btnAddTransaction, 0, 0);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 408);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(794, 39);
-            tableLayoutPanel4.TabIndex = 2;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -135,15 +103,21 @@
             lblBalance.TabIndex = 1;
             lblBalance.Text = "₩ 1,250,000 ";
             // 
-            // lblIncome
+            // tableLayoutPanel3
             // 
-            lblIncome.AutoSize = true;
-            lblIncome.Font = new Font("맑은 고딕", 12F);
-            lblIncome.Location = new Point(3, 0);
-            lblIncome.Name = "lblIncome";
-            lblIncome.Size = new Size(271, 28);
-            lblIncome.TabIndex = 0;
-            lblIncome.Text = " 이번 달 수입: ₩ 500,000     ";
+            tableLayoutPanel3.ColumnCount = 1;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel3.Controls.Add(lblExpense, 0, 1);
+            tableLayoutPanel3.Controls.Add(lblIncome, 0, 0);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 93);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 2;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Size = new Size(794, 84);
+            tableLayoutPanel3.TabIndex = 1;
             // 
             // lblExpense
             // 
@@ -155,15 +129,31 @@
             lblExpense.TabIndex = 1;
             lblExpense.Text = "이번 달 지출: ₩ 250,000   ";
             // 
-            // btnAddTransaction
+            // lblIncome
             // 
-            btnAddTransaction.Dock = DockStyle.Fill;
-            btnAddTransaction.Location = new Point(3, 3);
-            btnAddTransaction.Name = "btnAddTransaction";
-            btnAddTransaction.Size = new Size(391, 33);
-            btnAddTransaction.TabIndex = 0;
-            btnAddTransaction.Text = "+ 거래 추가";
-            btnAddTransaction.UseVisualStyleBackColor = true;
+            lblIncome.AutoSize = true;
+            lblIncome.Font = new Font("맑은 고딕", 12F);
+            lblIncome.Location = new Point(3, 0);
+            lblIncome.Name = "lblIncome";
+            lblIncome.Size = new Size(271, 28);
+            lblIncome.TabIndex = 0;
+            lblIncome.Text = " 이번 달 수입: ₩ 500,000     ";
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel4.Controls.Add(btnStatistics, 1, 0);
+            tableLayoutPanel4.Controls.Add(btnAddTransaction, 0, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 408);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(794, 39);
+            tableLayoutPanel4.TabIndex = 2;
             // 
             // btnStatistics
             // 
@@ -174,6 +164,16 @@
             btnStatistics.TabIndex = 1;
             btnStatistics.Text = "📊 통계";
             btnStatistics.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTransaction
+            // 
+            btnAddTransaction.Dock = DockStyle.Fill;
+            btnAddTransaction.Location = new Point(3, 3);
+            btnAddTransaction.Name = "btnAddTransaction";
+            btnAddTransaction.Size = new Size(391, 33);
+            btnAddTransaction.TabIndex = 0;
+            btnAddTransaction.Text = "+ 거래 추가";
+            btnAddTransaction.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel5
             // 
@@ -217,6 +217,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "MainForm";
             Text = "Budget Manager";
+            Load += MainForm_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
