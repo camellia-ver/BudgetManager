@@ -18,7 +18,12 @@ namespace BudgetManager
 
         private void LoadData()
         {
+            LoadBalance();
+        }
 
+        private void LoadBalance()
+        {
+            lblBalance.Text = $"₩ {_databaseService.GetBalance():N0}";
         }
     }
 }
