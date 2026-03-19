@@ -72,7 +72,7 @@ namespace BudgetManager
 
         private void btnAddTransaction_Click(object sender, EventArgs e)
         {
-            var form = new TransactionForm();
+            var form = new TransactionForm(_databaseService);
             form.ShowDialog();
             LoadData();
         }

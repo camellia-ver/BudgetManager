@@ -6,7 +6,7 @@ using System.Text;
 
 namespace BudgetManager.Services
 {
-    internal class DatabaseService
+    public class DatabaseService
     {
         private readonly string _connectionString;
 
@@ -171,6 +171,33 @@ namespace BudgetManager.Services
 
                 return (0, 0);
             }
+        }
+
+        public List<Category> GetCategories(TransactionType type)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT * FROM Categories WHERE Type = @Type";
+            var list = new List<Category>();
+
+            using(var cmd = new SqliteCommand(sql,connection))
+            {
+                cmd.Parameters.AddWithValue("@Type", (int)type);
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new Category
+                    {
+                        Id = reader.GetInt32(0),
+                        Name = reader.GetString(1),
+                        TransactionType = (TransactionType)reader.GetInt32(2)
+                    });
+                }
+            }
+
+            return list;
         }
     }
 }
