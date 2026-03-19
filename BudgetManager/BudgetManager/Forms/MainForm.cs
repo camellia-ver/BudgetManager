@@ -74,6 +74,7 @@ namespace BudgetManager
         {
             var form = new TransactionForm();
             form.ShowDialog();
+            LoadData();
         }
     }
 }
