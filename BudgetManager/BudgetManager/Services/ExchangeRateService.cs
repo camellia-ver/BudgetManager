@@ -7,8 +7,6 @@ namespace BudgetManager.Services
 {
     public class ExchangeRateService
     {
-        // System.Text.Json
-
         private readonly HttpClient _httpClient;
 
         public ExchangeRateService()
