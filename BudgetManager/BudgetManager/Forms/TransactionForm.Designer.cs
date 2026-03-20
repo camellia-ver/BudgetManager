@@ -194,6 +194,7 @@
             // 
             // dtpDate
             // 
+            dtpDate.CustomFormat = "yyyy-MM";
             dtpDate.Dock = DockStyle.Fill;
             dtpDate.Location = new Point(161, 3);
             dtpDate.Name = "dtpDate";

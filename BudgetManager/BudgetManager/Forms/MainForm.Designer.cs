@@ -164,6 +164,7 @@
             btnStatistics.TabIndex = 1;
             btnStatistics.Text = "📊 통계";
             btnStatistics.UseVisualStyleBackColor = true;
+            btnStatistics.Click += btnStatistics_Click;
             // 
             // btnAddTransaction
             // 

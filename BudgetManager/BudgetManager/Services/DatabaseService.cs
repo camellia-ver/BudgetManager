@@ -1,8 +1,10 @@
 ﻿using BudgetManager.Models;
 using Microsoft.Data.Sqlite;
+using ScottPlot.TickGenerators.TimeUnits;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BudgetManager.Services
 {
@@ -218,6 +220,33 @@ namespace BudgetManager.Services
                         Name = reader.GetString(1),
                         TransactionType = (TransactionType)reader.GetInt32(2)
                     });
+                }
+            }
+
+            return list;
+        }
+
+        public List<(string category, decimal amount)> GetCategoryExpenses(DateTime date)
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT Category, SUM(Amount) FROM Transactions WHERE Type = 1 AND strftime('%Y', Date) = @Year AND strftime('%m', Date) = @Month GROUP BY Category";
+            var list = new List<(string category, decimal amount)>();
+
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                cmd.Parameters.AddWithValue("@Year", date.Year.ToString("D4"));
+                cmd.Parameters.AddWithValue("@Month", date.Month.ToString("D2"));
+
+                using var reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add((
+                        reader.GetString(0),
+                        Convert.ToDecimal(reader.GetDouble(1))
+                     ));
                 }
             }
 

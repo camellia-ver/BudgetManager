@@ -76,5 +76,11 @@ namespace BudgetManager
             form.ShowDialog();
             LoadData();
         }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            var form = new StatisticsForm(_databaseService);
+            form.ShowDialog();
+        }
     }
 }
