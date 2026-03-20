@@ -125,24 +125,6 @@ CLI 사용 시:
 dotnet restore
 ```
 
----
-
-## 🔑 환경 설정
-
-<!-- 환율 API 키가 필요합니다. [ExchangeRate-API](https://www.exchangerate-api.com/)에서 무료로 발급 가능합니다.
-
-`appsettings.json` 파일을 생성하고 아래 내용을 입력하세요:
-
-```json
-{
-  "ExchangeRateApiKey": "YOUR_API_KEY_HERE"
-}
-```
-
-> ⚠️ `appsettings.json`은 `.gitignore`에 포함되어 있습니다. API 키를 절대 커밋하지 마세요. -->
-
----
-
 ## 📅 개발 일정
 
 | 단계 | 내용 | 상태 |
