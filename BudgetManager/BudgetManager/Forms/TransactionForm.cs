@@ -82,6 +82,7 @@ namespace BudgetManager.Forms
 
             Transaction transaction = new Transaction
             {
+                Id = _transaction?.Id ?? 0,
                 Amount = Convert.ToDecimal(txtAmount.Text),
                 Description = txtDescription.Text,
                 Type = rbIncome.Checked ? TransactionType.Income : TransactionType.Expense,
@@ -93,6 +94,7 @@ namespace BudgetManager.Forms
                 _databaseService.AddTransaction(transaction);
             else
                 _databaseService.UpdateTransaction(transaction);
+
             this.Close();
         }
 

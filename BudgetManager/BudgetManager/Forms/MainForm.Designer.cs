@@ -201,6 +201,7 @@
             lvTransactions.TabIndex = 0;
             lvTransactions.UseCompatibleStateImageBehavior = false;
             lvTransactions.DoubleClick += lvTransactions_DoubleClick;
+            lvTransactions.KeyDown += lvTransactions_KeyDown;
             // 
             // dtpMonth
             // 

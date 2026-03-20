@@ -95,5 +95,22 @@ namespace BudgetManager
             form.ShowDialog();
             LoadData();
         }
+
+        private void lvTransactions_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.Delete) return;
+            if (lvTransactions.SelectedItems.Count == 0) return;
+
+            var result = MessageBox.Show("정말 삭제할까요?", "삭제 확인",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result != DialogResult.Yes) return;
+
+            var selected = lvTransactions.SelectedItems[0];
+            var transcation = (Transaction)selected.Tag;
+
+            _databaseService.DeleteTransaction(transcation.Id);
+
+            LoadData();
+        }
     }
 }
