@@ -50,7 +50,7 @@
 | **언어** | C# (.NET 10.0) |
 | **UI** | Windows Forms (WinForms) |
 | **DB** | SQLite (Microsoft.Data.Sqlite) |
-| **차트** | LiveCharts2 |
+| **차트** | ScottPlot |
 | **API** | ExchangeRate-API (환율) |
 | **파일** | CsvHelper, ClosedXML |
 | **테스트** | xUnit |
@@ -151,8 +151,8 @@ dotnet restore
 | 2단계 | DB 모델 & DatabaseService | ✅ 완료 |
 | 3단계 | 메인 화면 (잔고 요약) | ✅ 완료 |
 | 4단계 | 수입/지출 CRUD 화면 | ✅ 완료 |
-| 5단계 | 통계 화면 (차트) | 🔄 진행중 |
-| 6단계 | 환율 API 연동 | ⏳ 예정 |
+| 5단계 | 통계 화면 (차트) | ✅ 완료 |
+| 6단계 | 환율 API 연동 | 🔄 진행중 |
 | 7단계 | CSV/Excel 파일 처리 | ⏳ 예정 |
 | 8단계 | README 완성 + 스크린샷 | ⏳ 예정 |
 <!-- 🔄 진행중 -->

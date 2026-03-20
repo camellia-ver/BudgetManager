@@ -57,6 +57,7 @@ namespace BudgetManager
             foreach (Transaction t in transactions)
             {
                 ListViewItem item = new ListViewItem(t.Date.ToString("yyyy-MM-dd"));
+                item.Tag = t;
                 item.SubItems.Add(t.Type == TransactionType.Income ? "수입" : "지출");
                 item.SubItems.Add($"₩ {t.Amount:N0}");
                 item.SubItems.Add(t.Category);
@@ -81,6 +82,18 @@ namespace BudgetManager
         {
             var form = new StatisticsForm(_databaseService);
             form.ShowDialog();
+        }
+
+        private void lvTransactions_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvTransactions.SelectedItems.Count == 0) return;
+
+            var selected = lvTransactions.SelectedItems[0];
+            var transcation = (Transaction)selected.Tag;
+
+            var form = new TransactionForm(_databaseService, transcation);
+            form.ShowDialog();
+            LoadData();
         }
     }
 }

@@ -14,17 +14,34 @@ namespace BudgetManager.Forms
     public partial class TransactionForm : Form
     {
         private readonly DatabaseService _databaseService;
+        private Transaction? _transaction;
 
-        public TransactionForm(DatabaseService databaseService)
+        public TransactionForm(DatabaseService databaseService, Transaction? transaction = null)
         {
             InitializeComponent();
             _databaseService = databaseService;
+            _transaction = transaction;
         }
 
         private void TransactionForm_Load(object sender, EventArgs e)
         {
             rbIncome.Checked = true;
             LoadCategories();
+
+            if(_transaction == null)
+            {
+                dtpDate.Value = _transaction.Date;
+                txtAmount.Text = _transaction.Amount.ToString();
+                txtDescription.Text = _transaction.Description;
+                cmbCategory.Text = _transaction.Category;
+
+                if (_transaction.Type == TransactionType.Income)
+                    rbIncome.Checked = true;
+                else
+                    rbExpense.Checked = true;
+
+                this.Text = "거래 수정";
+            }
         }
 
         private void LoadCategories()
@@ -72,7 +89,10 @@ namespace BudgetManager.Forms
                 Category = cmbCategory.Text
             };
 
-            _databaseService.AddTransaction(transaction);
+            if (_transaction == null)
+                _databaseService.AddTransaction(transaction);
+            else
+                _databaseService.UpdateTransaction(transaction);
             this.Close();
         }
 

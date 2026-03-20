@@ -200,6 +200,7 @@
             lvTransactions.Size = new Size(788, 163);
             lvTransactions.TabIndex = 0;
             lvTransactions.UseCompatibleStateImageBehavior = false;
+            lvTransactions.DoubleClick += lvTransactions_DoubleClick;
             // 
             // dtpMonth
             // 
