@@ -45,6 +45,11 @@
             menuStrip1 = new MenuStrip();
             mnuExchangeRate = new ToolStripMenuItem();
             mnuFile = new ToolStripMenuItem();
+            mnuExportCsv = new ToolStripMenuItem();
+            mnuExportExcel = new ToolStripMenuItem();
+            mnuImport = new ToolStripMenuItem();
+            mnuHelp = new ToolStripMenuItem();
+            mnuAbout = new ToolStripMenuItem();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -234,7 +239,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuExchangeRate, mnuFile });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuExchangeRate, mnuFile, mnuHelp });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 28);
@@ -246,12 +251,45 @@
             mnuExchangeRate.Name = "mnuExchangeRate";
             mnuExchangeRate.Size = new Size(88, 24);
             mnuExchangeRate.Text = "환율 변환";
+            mnuExchangeRate.Click += mnuExchangeRate_Click;
             // 
             // mnuFile
             // 
+            mnuFile.DropDownItems.AddRange(new ToolStripItem[] { mnuExportCsv, mnuExportExcel, mnuImport });
             mnuFile.Name = "mnuFile";
             mnuFile.Size = new Size(53, 24);
             mnuFile.Text = "파일";
+            // 
+            // mnuExportCsv
+            // 
+            mnuExportCsv.Name = "mnuExportCsv";
+            mnuExportCsv.Size = new Size(224, 26);
+            mnuExportCsv.Text = "내보내기 (CSV)";
+            // 
+            // mnuExportExcel
+            // 
+            mnuExportExcel.Name = "mnuExportExcel";
+            mnuExportExcel.Size = new Size(224, 26);
+            mnuExportExcel.Text = "내보내기 (Excel)";
+            // 
+            // mnuImport
+            // 
+            mnuImport.Name = "mnuImport";
+            mnuImport.Size = new Size(224, 26);
+            mnuImport.Text = "가져오기";
+            // 
+            // mnuHelp
+            // 
+            mnuHelp.DropDownItems.AddRange(new ToolStripItem[] { mnuAbout });
+            mnuHelp.Name = "mnuHelp";
+            mnuHelp.Size = new Size(68, 24);
+            mnuHelp.Text = "도움말";
+            // 
+            // mnuAbout
+            // 
+            mnuAbout.Name = "mnuAbout";
+            mnuAbout.Size = new Size(224, 26);
+            mnuAbout.Text = "정보";
             // 
             // MainForm
             // 
@@ -297,5 +335,10 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem mnuExchangeRate;
         private ToolStripMenuItem mnuFile;
+        private ToolStripMenuItem mnuExportCsv;
+        private ToolStripMenuItem mnuExportExcel;
+        private ToolStripMenuItem mnuImport;
+        private ToolStripMenuItem mnuHelp;
+        private ToolStripMenuItem mnuAbout;
     }
 }

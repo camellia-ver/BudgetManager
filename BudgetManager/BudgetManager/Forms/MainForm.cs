@@ -112,5 +112,11 @@ namespace BudgetManager
 
             LoadData();
         }
+
+        private void mnuExchangeRate_Click(object sender, EventArgs e)
+        {
+            var form = new ExchangeRateForm();
+            form.ShowDialog();
+        }
     }
 }
