@@ -265,18 +265,21 @@
             mnuExportCsv.Name = "mnuExportCsv";
             mnuExportCsv.Size = new Size(224, 26);
             mnuExportCsv.Text = "내보내기 (CSV)";
+            mnuExportCsv.Click += mnuExportCsv_Click;
             // 
             // mnuExportExcel
             // 
             mnuExportExcel.Name = "mnuExportExcel";
             mnuExportExcel.Size = new Size(224, 26);
             mnuExportExcel.Text = "내보내기 (Excel)";
+            mnuExportExcel.Click += mnuExportExcel_Click;
             // 
             // mnuImport
             // 
             mnuImport.Name = "mnuImport";
             mnuImport.Size = new Size(224, 26);
             mnuImport.Text = "가져오기";
+            mnuImport.Click += mnuImport_Click;
             // 
             // mnuHelp
             // 
@@ -288,7 +291,7 @@
             // mnuAbout
             // 
             mnuAbout.Name = "mnuAbout";
-            mnuAbout.Size = new Size(224, 26);
+            mnuAbout.Size = new Size(122, 26);
             mnuAbout.Text = "정보";
             // 
             // MainForm

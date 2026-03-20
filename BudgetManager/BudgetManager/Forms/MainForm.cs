@@ -118,5 +118,20 @@ namespace BudgetManager
             var form = new ExchangeRateForm();
             form.ShowDialog();
         }
+
+        private void mnuExportCsv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuExportExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuImport_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
