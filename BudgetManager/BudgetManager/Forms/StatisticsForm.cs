@@ -64,5 +64,33 @@ namespace BudgetManager.Forms
             _pieChart.Plot.Title("카테고리별 지출");
             _pieChart.Refresh();
         }
+
+        private void LoadBarChart()
+        {
+            _barChart.Plot.Clear();
+
+            double[] incomes = new double[6];
+            double[] expenses = new double[6];
+            string[] labels = new string[6];
+
+            for (int i = 5; i > 0; i--)
+            {
+                DateTime date = dtpMonth.Value.AddMonths(-i);
+                var (income, expense) = _databaseService.GetMonthlyTotal(date);
+
+                incomes[5 - i] = (double)income;
+                expenses[5 - i] = (double)expense;
+                labels[5 - i] = date.ToString("yyyy-MM");
+            }
+
+            var bar1 = _barChart.Plot.Add.Bars(incomes);
+            bar1.Color = ScottPlot.Color.FromHex("#4CAF50");
+
+            var bar2 = _barChart.Plot.Add.Bars(expenses);
+            bar2.Color = ScottPlot.Color.FromHex("#F44336");
+
+            _barChart.Plot.Title("월별 수입/지출");
+            _barChart.Refresh();
+        }
     }
 }
