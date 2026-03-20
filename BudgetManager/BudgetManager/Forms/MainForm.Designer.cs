@@ -42,11 +42,15 @@
             lvTransactions = new ListView();
             dtpMonth = new DateTimePicker();
             lblHint = new Label();
+            menuStrip1 = new MenuStrip();
+            mnuExchangeRate = new ToolStripMenuItem();
+            mnuFile = new ToolStripMenuItem();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,14 +62,14 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel4, 0, 3);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 0, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Location = new Point(0, 28);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Size = new Size(800, 450);
+            tableLayoutPanel1.Size = new Size(800, 422);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -81,7 +85,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(794, 84);
+            tableLayoutPanel2.Size = new Size(794, 78);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label2
@@ -98,7 +102,7 @@
             // 
             lblBalance.AutoSize = true;
             lblBalance.Font = new Font("맑은 고딕", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 129);
-            lblBalance.Location = new Point(3, 42);
+            lblBalance.Location = new Point(3, 39);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(149, 31);
             lblBalance.TabIndex = 1;
@@ -112,19 +116,19 @@
             tableLayoutPanel3.Controls.Add(lblExpense, 0, 1);
             tableLayoutPanel3.Controls.Add(lblIncome, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 93);
+            tableLayoutPanel3.Location = new Point(3, 87);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(794, 84);
+            tableLayoutPanel3.Size = new Size(794, 78);
             tableLayoutPanel3.TabIndex = 1;
             // 
             // lblExpense
             // 
             lblExpense.AutoSize = true;
             lblExpense.Font = new Font("맑은 고딕", 12F);
-            lblExpense.Location = new Point(3, 42);
+            lblExpense.Location = new Point(3, 39);
             lblExpense.Name = "lblExpense";
             lblExpense.Size = new Size(250, 28);
             lblExpense.TabIndex = 1;
@@ -148,12 +152,12 @@
             tableLayoutPanel4.Controls.Add(btnStatistics, 1, 0);
             tableLayoutPanel4.Controls.Add(btnAddTransaction, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 408);
+            tableLayoutPanel4.Location = new Point(3, 382);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(794, 39);
+            tableLayoutPanel4.Size = new Size(794, 37);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // btnStatistics
@@ -161,7 +165,7 @@
             btnStatistics.Dock = DockStyle.Fill;
             btnStatistics.Location = new Point(400, 3);
             btnStatistics.Name = "btnStatistics";
-            btnStatistics.Size = new Size(391, 33);
+            btnStatistics.Size = new Size(391, 31);
             btnStatistics.TabIndex = 1;
             btnStatistics.Text = "📊 통계";
             btnStatistics.UseVisualStyleBackColor = true;
@@ -172,7 +176,7 @@
             btnAddTransaction.Dock = DockStyle.Fill;
             btnAddTransaction.Location = new Point(3, 3);
             btnAddTransaction.Name = "btnAddTransaction";
-            btnAddTransaction.Size = new Size(391, 33);
+            btnAddTransaction.Size = new Size(391, 31);
             btnAddTransaction.TabIndex = 0;
             btnAddTransaction.Text = "+ 거래 추가";
             btnAddTransaction.UseVisualStyleBackColor = true;
@@ -186,13 +190,13 @@
             tableLayoutPanel5.Controls.Add(dtpMonth, 0, 0);
             tableLayoutPanel5.Controls.Add(lblHint, 0, 2);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 183);
+            tableLayoutPanel5.Location = new Point(3, 171);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 3;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            tableLayoutPanel5.Size = new Size(794, 219);
+            tableLayoutPanel5.Size = new Size(794, 205);
             tableLayoutPanel5.TabIndex = 3;
             // 
             // lvTransactions
@@ -200,7 +204,7 @@
             lvTransactions.Dock = DockStyle.Fill;
             lvTransactions.Location = new Point(3, 43);
             lvTransactions.Name = "lvTransactions";
-            lvTransactions.Size = new Size(788, 143);
+            lvTransactions.Size = new Size(788, 129);
             lvTransactions.TabIndex = 0;
             lvTransactions.UseCompatibleStateImageBehavior = false;
             lvTransactions.DoubleClick += lvTransactions_DoubleClick;
@@ -221,11 +225,33 @@
             // 
             lblHint.AutoSize = true;
             lblHint.ForeColor = Color.Gray;
-            lblHint.Location = new Point(3, 189);
+            lblHint.Location = new Point(3, 175);
             lblHint.Name = "lblHint";
             lblHint.Size = new Size(223, 20);
             lblHint.TabIndex = 2;
             lblHint.Text = "더블클릭: 수정 | Delete 키: 삭제";
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuExchangeRate, mnuFile });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "📋 메뉴";
+            // 
+            // mnuExchangeRate
+            // 
+            mnuExchangeRate.Name = "mnuExchangeRate";
+            mnuExchangeRate.Size = new Size(88, 24);
+            mnuExchangeRate.Text = "환율 변환";
+            // 
+            // mnuFile
+            // 
+            mnuFile.Name = "mnuFile";
+            mnuFile.Size = new Size(53, 24);
+            mnuFile.Text = "파일";
             // 
             // MainForm
             // 
@@ -233,6 +259,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "Budget Manager";
             Load += MainForm_Load;
@@ -244,7 +272,10 @@
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -263,5 +294,8 @@
         private ListView lvTransactions;
         private DateTimePicker dtpMonth;
         private Label lblHint;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem mnuExchangeRate;
+        private ToolStripMenuItem mnuFile;
     }
 }
