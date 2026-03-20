@@ -41,6 +41,7 @@
             tableLayoutPanel5 = new TableLayoutPanel();
             lvTransactions = new ListView();
             dtpMonth = new DateTimePicker();
+            lblHint = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -183,21 +184,23 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.Controls.Add(lvTransactions, 0, 1);
             tableLayoutPanel5.Controls.Add(dtpMonth, 0, 0);
+            tableLayoutPanel5.Controls.Add(lblHint, 0, 2);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 183);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.RowCount = 3;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
             tableLayoutPanel5.Size = new Size(794, 219);
             tableLayoutPanel5.TabIndex = 3;
             // 
             // lvTransactions
             // 
             lvTransactions.Dock = DockStyle.Fill;
-            lvTransactions.Location = new Point(3, 53);
+            lvTransactions.Location = new Point(3, 43);
             lvTransactions.Name = "lvTransactions";
-            lvTransactions.Size = new Size(788, 163);
+            lvTransactions.Size = new Size(788, 143);
             lvTransactions.TabIndex = 0;
             lvTransactions.UseCompatibleStateImageBehavior = false;
             lvTransactions.DoubleClick += lvTransactions_DoubleClick;
@@ -213,6 +216,16 @@
             dtpMonth.Size = new Size(788, 27);
             dtpMonth.TabIndex = 1;
             dtpMonth.ValueChanged += dtpMonth_ValueChanged;
+            // 
+            // lblHint
+            // 
+            lblHint.AutoSize = true;
+            lblHint.ForeColor = Color.Gray;
+            lblHint.Location = new Point(3, 189);
+            lblHint.Name = "lblHint";
+            lblHint.Size = new Size(223, 20);
+            lblHint.TabIndex = 2;
+            lblHint.Text = "더블클릭: 수정 | Delete 키: 삭제";
             // 
             // MainForm
             // 
@@ -230,6 +243,7 @@
             tableLayoutPanel3.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -248,5 +262,6 @@
         private TableLayoutPanel tableLayoutPanel5;
         private ListView lvTransactions;
         private DateTimePicker dtpMonth;
+        private Label lblHint;
     }
 }
