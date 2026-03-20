@@ -28,7 +28,7 @@ namespace BudgetManager.Forms
             rbIncome.Checked = true;
             LoadCategories();
 
-            if(_transaction == null)
+            if(_transaction != null)
             {
                 dtpDate.Value = _transaction.Date;
                 txtAmount.Text = _transaction.Amount.ToString();
