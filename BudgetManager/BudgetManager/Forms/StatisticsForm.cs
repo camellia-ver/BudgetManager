@@ -38,17 +38,18 @@ namespace BudgetManager.Forms
 
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
-
+            LoadChart();
         }
 
         private void dtpMonth_ValueChanged(object sender, EventArgs e)
         {
-
+            LoadChart();
         }
 
         private void LoadChart()
         {
-
+            LoadPieChart();
+            LoadBarChart(); 
         }
 
         private void LoadPieChart()
@@ -57,11 +58,18 @@ namespace BudgetManager.Forms
 
             _pieChart.Plot.Clear();
 
+            if (data.Count == 0)
+            {
+                _pieChart.Plot.Title("No Data");
+                _pieChart.Refresh();
+                return;
+            }
+
             double[] values = data.Select(d => (double)d.amount).ToArray();
             string[] lables = data.Select(d => d.category).ToArray();
 
             _pieChart.Plot.Add.Pie(values);
-            _pieChart.Plot.Title("카테고리별 지출");
+            _pieChart.Plot.Title("Expenses by Category");
             _pieChart.Refresh();
         }
 
@@ -73,7 +81,7 @@ namespace BudgetManager.Forms
             double[] expenses = new double[6];
             string[] labels = new string[6];
 
-            for (int i = 5; i > 0; i--)
+            for (int i = 5; i >= 0; i--)
             {
                 DateTime date = dtpMonth.Value.AddMonths(-i);
                 var (income, expense) = _databaseService.GetMonthlyTotal(date);
@@ -85,11 +93,14 @@ namespace BudgetManager.Forms
 
             var bar1 = _barChart.Plot.Add.Bars(incomes);
             bar1.Color = ScottPlot.Color.FromHex("#4CAF50");
+            bar1.LegendText = "Income";
 
             var bar2 = _barChart.Plot.Add.Bars(expenses);
             bar2.Color = ScottPlot.Color.FromHex("#F44336");
+            bar2.LegendText = "Expense";
 
-            _barChart.Plot.Title("월별 수입/지출");
+            _barChart.Plot.ShowLegend();
+            _barChart.Plot.Title("Monthly Income / Expense");
             _barChart.Refresh();
         }
     }
