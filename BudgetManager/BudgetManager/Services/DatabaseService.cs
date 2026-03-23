@@ -123,6 +123,38 @@ namespace BudgetManager.Services
             return transactions;
         }
 
+        public List<Transaction> GetTransactions()
+        {
+            using var connection = new SqliteConnection(_connectionString);
+            connection.Open();
+
+            string sql = "SELECT * FROM Transactions;";
+
+            var transactions = new List<Transaction>();
+
+            using (var cmd = new SqliteCommand(sql, connection))
+            {
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    //0: Id, 1: Amount, 2: Date, 3: Description, 4: Type, 5: Category
+                    var transaction = new Transaction
+                    {
+                        Id = reader.GetInt32(0),
+                        Amount = (decimal)reader.GetDouble(1),
+                        Date = DateTime.Parse(reader.GetString(2)),
+                        Description = reader.GetString(3),
+                        Type = (TransactionType)reader.GetInt32(4),
+                        Category = reader.GetString(5),
+                    };
+
+                    transactions.Add(transaction);
+                }
+            }
+
+            return transactions;
+        }
+
         public void UpdateTransaction(Transaction transaction)
         {
             using var connection = new SqliteConnection(_connectionString);

@@ -121,7 +121,12 @@ namespace BudgetManager
 
         private void mnuExportCsv_Click(object sender, EventArgs e)
         {
-
+            var dialog = new SaveFileDialog();
+            dialog.Filter = "CSV 파일|*.csv";
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileService.ExportToCsv(, dialog.FileName);
+            }
         }
 
         private void mnuExportExcel_Click(object sender, EventArgs e)
