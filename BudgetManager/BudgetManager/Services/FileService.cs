@@ -12,7 +12,7 @@ namespace BudgetManager.Services
     {
         public static void ExportToCsv(List<Transaction> transactions, string filePath)
         {
-            using var writer = new StreamWriter(filePath);
+            using var writer = new StreamWriter(filePath, false, System.Text.Encoding.UTF8);
             using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
             csv.WriteRecords(transactions);
         }

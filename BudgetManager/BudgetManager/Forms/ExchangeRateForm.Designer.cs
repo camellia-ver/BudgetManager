@@ -66,9 +66,9 @@
             lblResult.Location = new Point(3, 188);
             lblResult.Name = "lblResult";
             lblResult.RightToLeft = RightToLeft.No;
-            lblResult.Size = new Size(233, 37);
+            lblResult.Size = new Size(86, 37);
             lblResult.TabIndex = 3;
-            lblResult.Text = "결과: ₩ 1,250,000";
+            lblResult.Text = "결과: ";
             lblResult.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label1
