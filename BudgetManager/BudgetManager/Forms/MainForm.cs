@@ -123,20 +123,40 @@ namespace BudgetManager
         {
             var dialog = new SaveFileDialog();
             dialog.Filter = "CSV 파일|*.csv";
+
             if(dialog.ShowDialog() == DialogResult.OK)
             {
-                FileService.ExportToCsv(, dialog.FileName);
+                FileService.ExportToCsv(_databaseService.GetTransactions(), dialog.FileName);
             }
         }
 
         private void mnuExportExcel_Click(object sender, EventArgs e)
         {
+            var dialog = new SaveFileDialog();
+            dialog.Filter = "Excel 파일|*.xlsx";
 
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                FileService.ExportExcel(_databaseService.GetTransactions(), dialog.FileName);
+            }
         }
 
         private void mnuImport_Click(object sender, EventArgs e)
         {
+            var dialog = new OpenFileDialog();
+            dialog.Filter = "CSV 파일|*.csv";
 
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                List<Transaction> transactions = FileService.ImportFromCsv(dialog.FileName);
+
+                foreach(Transaction transaction in transactions)
+                {
+                    _databaseService.AddTransaction(transaction);
+                }
+
+                LoadData();
+            }
         }
     }
 }
