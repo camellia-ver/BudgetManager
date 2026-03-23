@@ -9,14 +9,16 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
 ---
-
 ## 📸 스크린샷
 
-> _(개발 완료 후 스크린샷 추가 예정)_
+| 메인 화면 | 거래 추가 |
+|-----------|-----------|
+| ![main](docs/screenshots/main.png) | ![transaction](docs/screenshots/transaction.png) |
 
-<!-- | 메인 화면 | 거래 내역 | 통계 |
-|-----------|-----------|------|
-| ![main]() | ![transaction]() | ![statistics]() | -->
+
+| 통계 | 환율 변환 |
+|------|-----------|
+| ![statistics](docs/screenshots/statistics.png) | ![exchange](docs/screenshots/exchange.png) |
 
 ---
 
@@ -136,7 +138,7 @@ dotnet restore
 | 5단계 | 통계 화면 (차트) | ✅ 완료 |
 | 6단계 | 환율 API 연동 | ✅ 완료 |
 | 7단계 | CSV/Excel 파일 처리 | ✅ 완료 |
-| 8단계 | README 완성 + 스크린샷 | 🔄 진행중 |
+| 8단계 | README 완성 + 스크린샷 | ✅ 완료 |
 ---
 
 ## 📄 라이선스
