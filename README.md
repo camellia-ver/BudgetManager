@@ -55,7 +55,6 @@
 | **차트** | ScottPlot |
 | **API** |  Open ER-API |
 | **파일** | CsvHelper, ClosedXML |
-| **테스트** | xUnit |
 
 ---
 
