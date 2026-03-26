@@ -53,7 +53,7 @@
 | **UI** | Windows Forms (WinForms) |
 | **DB** | SQLite (Microsoft.Data.Sqlite) |
 | **차트** | ScottPlot |
-| **API** | ExchangeRate-API (환율) |
+| **API** |  Open ER-API |
 | **파일** | CsvHelper, ClosedXML |
 | **테스트** | xUnit |
 
